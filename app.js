@@ -1,6 +1,10 @@
 //? EyeDropper nedir?
 
 document.querySelector(".btn").addEventListener("click", async () => {
+  if (!window.EyeDropper) {
+    resultElement.textContent = "Your browser does not support the EyeDropper API";
+    return;
+  }
   const eyeDropper = new EyeDropper();
   const { sRGBHex } = await eyeDropper.open();
   document.querySelector(".color-display").innerHTML = sRGBHex;
